@@ -38,12 +38,12 @@ const app = express();
 
 // localhost:8001/api/v1/docs
 
-app.use(formidableMiddleware);
 app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.resolve("public")));
 app.use(fileUpload({}));
+app.use(formidableMiddleware());
 app.use(morgan("tiny"));
 
 app.use(adminBro.options.rootPath, adminRouter);
